@@ -3,7 +3,9 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('Calculating SLAU');
+  xk = [0.78,0.99, 1.05]
+  res.json(xk)
+  console.log(req.body);
 });
 
 module.exports = router;
