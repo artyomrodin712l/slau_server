@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 
-function Calculate(tableRowData) {
+function Calculate(tableRowData,matrix) {
   console.log(tableRowData)
   rows = tableRowData.length
   console.log(rows)
@@ -30,7 +30,7 @@ function Calculate(tableRowData) {
   var max_iter = 100000;
   var E = 0.001;
   for (i = 0; i < M; i++) {
-    F[i] = Math.random() * (1 - -1) + -1;
+    F[i] = matrix[i];
   }
   console.log(F);
   /* Вычисляем сумму квадратов элементов вектора F*/
@@ -91,8 +91,8 @@ function Calculate(tableRowData) {
 
 /* GET users listing. */
 router.post('/', function(req, res, next) {
-  var xk = Calculate(req.body.table)
-  console.log(req.body.table)
+  var xk = Calculate(req.body.table,req.body.matrix)
+  console.log(req.body.table,req.body.matrix)
   //Send data to client
   res.json(xk)
   console.log(xk)
